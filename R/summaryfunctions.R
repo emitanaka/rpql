@@ -30,6 +30,60 @@ print.summary.rpql <- function(x, ...)
     }	
 	
 	
+
+
+#' Summary of GLMM fitted using regularized PQL.
+#' 
+#' A summary of the results from applying \code{rpql}.
+#' 
+#' 
+#' @aliases summary.rpql print.summary.rpql
+#' @param object An object of class "rpql".
+#' @param x An object of class "rpql".
+#' @param ... Not used.
+#' @return A list (some of which is printed) containing the following elements:
+#' \item{Call}{The matched call.}
+#' 
+#' \item{fixed}{Estimated fixed effects coefficients.}
+#' 
+#' \item{ranef}{A list with each element being a matrix of estimated random
+#' effects coefficients.}
+#' 
+#' \item{ran.cov}{A list with each element being a estimated random effects
+#' covariance matrix.}
+#' 
+#' \item{logLik}{PQL log-likelihood value at convergence.}
+#' 
+#' \item{family}{The \code{family} argument, i.e. response type.}
+#' 
+#' \item{pen.type,lambda}{Penalties used for selection and the corresponding
+#' tuning parameter values.}
+#' 
+#' \item{ics}{A vector containing the number of estimated, non-zero parameters,
+#' and three information criterion. Please see the help file for \code{rpql}
+#' for details on these criteria.}
+#' 
+#' \item{id}{The \code{id} argument, i.e. list of IDs.}
+#' 
+#' \item{nonzero.fixef}{A vector indexing which of the estimated fixed effect
+#' coefficients are non-zero.}
+#' 
+#' \item{nonzero.ranef}{A list with each element being a vector indexing which
+#' of the estimated random effects are non-zero, i.e. which of the diagonal
+#' elements in the corresponding element of \code{ran.cov} are non-zero.}
+#' @author
+#' c("\\Sexpr[results=rd,stage=build]{tools:::Rd_package_author(\"#1\")}",
+#' "rpql")\Sexpr{tools:::Rd_package_author("rpql")}
+#' 
+#' Maintainer:
+#' c("\\Sexpr[results=rd,stage=build]{tools:::Rd_package_maintainer(\"#1\")}",
+#' "rpql")\Sexpr{tools:::Rd_package_maintainer("rpql")}
+#' @seealso \code{\link{rpql}} for fitting and performing model selection in
+#' GLMMs using regularized PQL.
+#' @examples
+#' 
+#' ## Please see examples in help file for the rpql function
+#' 
 summary.rpql <- function(object, ...) 
      {
      gather_output <- list(call = object$call, fixef = round(object$fixef,3), ranef = lapply(object$ranef,round,3), 
